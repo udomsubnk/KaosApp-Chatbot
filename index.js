@@ -35,8 +35,8 @@ app.post('/webhook/', function (req, res) {
             if (text === 'hi') {
                 sendGenericMessage(sender)
             }
-            // else sendTextMessage(sender, ""/*start text*/ + text.substring(0, 200))
-            else reqSimsimi(sender, text)
+            else sendTextMessage(sender, ""/*start text*/ + text.substring(0, 200))
+            // else reqSimsimi(sender, text)
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)
