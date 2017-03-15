@@ -133,14 +133,17 @@ function sendGenericMessage(sender) {
 }
 app.get('/test/:text',function(req,res){
     param = req.params.text
-     var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+param
+     // var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+param
+     var url = "http://www.simsimi.com/getRealtimeReq?uuid=x05UQevdOagK43juPwfg5pKmYFLXJD6t4UIQP2sEL7B&lc=th&ft=1&status=W&reqText="+param
     request(url, function(error, ress, body) {
         if (error) {
             console.log('Error sending messages: ', error)
         }else if(ress.statusCode != 200){
             console.log("มึงพูดอะไร กูไม่เข้าใจ")
         }else{
-            var text = JSON.parse(body).response
+            console.log(body);
+            // var text = JSON.parse(body).response
+            var text = JSON.parse(body).respSentence
             console.log(text)
         }
     })
@@ -148,14 +151,16 @@ app.get('/test/:text',function(req,res){
 
 //simsimi
 function reqSimsimi(sender,text){
-    var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+text
+    // var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+text
+    var url = "http://www.simsimi.com/getRealtimeReq?uuid=x05UQevdOagK43juPwfg5pKmYFLXJD6t4UIQP2sEL7B&lc=th&ft=1&status=W&reqText="+text
     request(url, function(error, ress, body) {
         if (error) {
             console.log('Error sending messages: ', error)
         }else if(ress.statusCode != 200){
             sendTextMessage(sender,"มึงพูดอะไร กูไม่เข้าใจ")
         }else{
-            var text = JSON.parse(body).response
+            // var text = JSON.parse(body).response
+            var text = JSON.parse(body).respSentence
             sendTextMessage(sender,text)
         }
     })
