@@ -131,31 +131,32 @@ function sendGenericMessage(sender) {
         }
     })
 }
-// app.get('/test/:text',function(req,res){
-//     param = req.params.text
-//      var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+param
-//     request(url, function(error, ress, body) {
-//         if (error) {
-//             console.log('Error sending messages: ', error)
-//         }else{
-//             var text = JSON.parse(body)
-//             console.log(text.response)
-//             sendTextMessage(sender,text)
-//         }
-//     })
-// });
+app.get('/test/:text',function(req,res){
+    param = req.params.text
+     var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+param
+    request(url, function(error, ress, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        }else if(ress.statusCode != 200){
+            console.log("มึงพูดอะไร กูไม่เข้าใจ")
+        }else{
+            var text = JSON.parse(body).response
+            console.log(text)
+        }
+    })
+});
+
 //simsimi
 function reqSimsimi(sender,text){
     var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+text
-    request(url, function(error, res, body) {
+    request(url, function(error, ress, body) {
         if (error) {
             console.log('Error sending messages: ', error)
+        }else if(ress.statusCode != 200){
+            sendTextMessage(sender,"มึงพูดอะไร กูไม่เข้าใจ")
         }else{
-            var text = JSON.parse(body)
-            console.log(text.response)
-            if(res.statusCode == 404)
-                sendTextMessage(sender,"มึงพูดอะไร กูไม่เข้าใจ")
-            else sendTextMessage(sender,text)
+            var text = JSON.parse(body).response
+            sendTextMessage(sender,text)
         }
     })
 }
