@@ -134,20 +134,21 @@ function sendGenericMessage(sender) {
 
 //simsimi
 function reqSimsimi(sender,text){
-    var textres = ""
-    request({
-        url: "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+text,
-        method: 'GET'
-    }, function(error, res, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-        else{
-            textres = res
-            sendTextMessage(sender,textres)
-        }
-    })
+    // var textres = ""
+    // request({
+    //     url: "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+text,
+    //     method: 'GET'
+    // }, function(error, res, body) {
+    //     if (error) {
+    //         console.log('Error sending messages: ', error)
+    //     } else if (response.body.error) {
+    //         console.log('Error: ', response.body.error)
+    //     }
+    //     else{
+    //         textres = res
+    //         sendTextMessage(sender,textres)
+    //     }
+    // })
+    sendTextMessage(sender,"xxx")
 }
 
