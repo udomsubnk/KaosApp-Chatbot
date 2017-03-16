@@ -33,7 +33,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             text = event.message.text
             if (/[ก-๙]/.test(text))
-                sendTextMessage(sender,"พิมพ์ภาษาไทยมาดิวะ อ่านไม่ออก WTF")
+                sendTextMessage(sender,"Type English only Please. กูอ่านไม่ออก WTF")
             else if (text === 'hi') {
                 sendGenericMessage(sender)
             }
