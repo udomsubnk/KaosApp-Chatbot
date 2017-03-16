@@ -32,7 +32,9 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
             text = event.message.text
-            if (text === 'hi') {
+            if (/[ก-๙]/.test(text))
+                sendTextMessage(sender,"พิมพ์ภาษาไทยมาดิวะ อ่านไม่ออก WTF")
+            else if (text === 'hi') {
                 sendGenericMessage(sender)
             }
             // else sendTextMessage(sender, ""/*start text*/ + text.substring(0, 200))
