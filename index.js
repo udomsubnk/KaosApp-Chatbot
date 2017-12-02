@@ -2,6 +2,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
+var path = require('path');
 
 app.set('port', (process.env.PORT || 3000))
 app.use(bodyParser.urlencoded({extended: false}))
@@ -41,7 +42,7 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 app.get('/test', function (req, res) {
-    res.sendFile('./index.html')
+    res.sendFile(path.join(__dirname, 'index.html'))
 })
 var token = "EAAK9e5TfD2kBAM9rh0sfvyqrJOYtPIwP3GNZCTHbwCxw2c9zCvtQNWIIkoIpyWi3eJYxqwnO9b7ZCVkYJl17Mlq0ZAcbpZC6JYBwfUSAoNG7GWCK2ALMCO31l39thJdVMXZAZAPSGYQlG7cPrcvPyUFYYWzJiz40uBh2F1yKJvZCgZDZD"
 
