@@ -12,6 +12,9 @@ app.use(bodyParser.json())
 app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
 })
+app.get('/customer', function (req, res) {
+    res.sendFile(path.join(__dirname, 'index.html'))
+})
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'testnaja') {
         res.send(req.query['hub.challenge'])
@@ -40,9 +43,6 @@ app.post('/webhook/', function (req, res) {
 })
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
-})
-app.get('/test', function (req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'))
 })
 var token = "EAAK9e5TfD2kBAM9rh0sfvyqrJOYtPIwP3GNZCTHbwCxw2c9zCvtQNWIIkoIpyWi3eJYxqwnO9b7ZCVkYJl17Mlq0ZAcbpZC6JYBwfUSAoNG7GWCK2ALMCO31l39thJdVMXZAZAPSGYQlG7cPrcvPyUFYYWzJiz40uBh2F1yKJvZCgZDZD"
 
