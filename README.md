@@ -3,10 +3,10 @@
 This app is a chat bot service for Facebook Messenger.
 
 > Facebook Mesenger customer-plugin `at first`
-![alt text](https://raw.githubusercontent.com/udomsubnk/Homework/master/screenshort/customerPlugin-atFirst.png)
+![alt text](https://github.com/udomsubnk/KaosApp-Chatbot/blob/master/screenshorts/customerPlugin-atFirst.png)
 
 > Facebook Mesenger customer-plugin `chatting`
-![alt text](https://raw.githubusercontent.com/udomsubnk/Homework/master/screenshort/customerPlugin-chatting.png)
+![alt text](https://github.com/udomsubnk/KaosApp-Chatbot/blob/master/screenshorts/customerPlugin-chatting.png)
 
 > Directly chatting
 ![alt text](https://github.com/udomsubnk/KaosApp-Chatbot/blob/master/screenshorts/chatting%20directly.png)
