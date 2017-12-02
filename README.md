@@ -2,6 +2,15 @@
 
 This app is a chat bot service for Facebook Messenger.
 
+> Facebook Mesenger customer-plugin `at first`
+![alt text](https://raw.githubusercontent.com/udomsubnk/Homework/master/screenshort/customerPlugin-atFirst.png)
+
+> Facebook Mesenger customer-plugin `chatting`
+![alt text](https://raw.githubusercontent.com/udomsubnk/Homework/master/screenshort/customerPlugin-chatting.png)
+
+> Directly chatting
+![alt text](https://github.com/udomsubnk/KaosApp-Chatbot/blob/master/screenshorts/chatting%20directly.png)
+
 ## Try it
 
 Try it for Messenger customer-Plugin >> https://kaosbot.herokuapp.com/customer 
@@ -22,6 +31,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
   ]
 }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAGE_ACCESS_TOKEN"
 ```
-	
-Or install `disable-content-security` Chrome extension 
-> https://chrome.google.com/webstore/detail/disable-content-security/ieelmcmcagommplceebfedjlakkhpden
+
+* Have fun!
+
+> Don't forgot my Facebook app is not released yet, So it will response me only.
