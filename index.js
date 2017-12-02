@@ -28,12 +28,10 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
             text = event.message.text
-            if (/[ก-๙]/.test(text))
-                sendTextMessage(sender,"English only Please.")
-            else if (text === 'hi') {
+            if (text === 'hi') {
                 sendGenericMessage(sender)
             }
-            else sendTextMessage(sender, "Please try again later.")
+            else sendTextMessage(sender, text)
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)
@@ -43,23 +41,6 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
-app.get('/test/:text',function(req,res){
-    param = req.params.text
-     // var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+param
-     var url = "http://www.simsimi.com/getRealtimeReq?uuid=x05UQevdOagK43juPwfg5pKmYFLXJD6t4UIQP2sEL7B&lc=th&ft=1&status=W&reqText="+param
-    request(url, function(error, ress, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        }else if(ress.statusCode != 200){
-            console.log("error")
-        }else{
-            console.log(body);
-            // var text = JSON.parse(body).response
-            var text = JSON.parse(body).respSentence
-            console.log(text)
-        }
-    })
-});
 
 var token = "EAAK9e5TfD2kBAM9rh0sfvyqrJOYtPIwP3GNZCTHbwCxw2c9zCvtQNWIIkoIpyWi3eJYxqwnO9b7ZCVkYJl17Mlq0ZAcbpZC6JYBwfUSAoNG7GWCK2ALMCO31l39thJdVMXZAZAPSGYQlG7cPrcvPyUFYYWzJiz40uBh2F1yKJvZCgZDZD"
 
