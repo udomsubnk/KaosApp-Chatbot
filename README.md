@@ -23,5 +23,5 @@ curl -X POST -H "Content-Type: application/json" -d '{
 }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAGE_ACCESS_TOKEN"
 ```
 	
-Don't forget to install `disable-content-security` Chrome extension 
+Or install `disable-content-security` Chrome extension 
 > https://chrome.google.com/webstore/detail/disable-content-security/ieelmcmcagommplceebfedjlakkhpden
