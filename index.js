@@ -17,10 +17,6 @@ app.get('/webhook/', function (req, res) {
     }
     res.send('Error, wrong token')
 })
-app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
-})
-
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
@@ -41,7 +37,12 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
-
+app.listen(app.get('port'), function() {
+    console.log('running on port', app.get('port'))
+})
+app.get('/test', function (req, res) {
+    res.sendFile('./index.html')
+})
 var token = "EAAK9e5TfD2kBAM9rh0sfvyqrJOYtPIwP3GNZCTHbwCxw2c9zCvtQNWIIkoIpyWi3eJYxqwnO9b7ZCVkYJl17Mlq0ZAcbpZC6JYBwfUSAoNG7GWCK2ALMCO31l39thJdVMXZAZAPSGYQlG7cPrcvPyUFYYWzJiz40uBh2F1yKJvZCgZDZD"
 
 function sendTextMessage(sender, text) {
