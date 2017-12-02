@@ -3,28 +3,25 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('port', (process.env.PORT || 3000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-// Index route
+
 app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
 })
-// for Facebook verification
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'testnaja') {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
 })
-// Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-
-// API End Point - added by Stefan
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
@@ -33,7 +30,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             text = event.message.text
             if (/[ก-๙]/.test(text))
-                sendTextMessage(sender,"Type English only Please. กูอ่านไม่ออก WTF")
+                sendTextMessage(sender,"English only Please.")
             else if (text === 'hi') {
                 sendGenericMessage(sender)
             }
@@ -51,15 +48,14 @@ app.post('/webhook/', function (req, res) {
 
 var token = "EAAK9e5TfD2kBAM9rh0sfvyqrJOYtPIwP3GNZCTHbwCxw2c9zCvtQNWIIkoIpyWi3eJYxqwnO9b7ZCVkYJl17Mlq0ZAcbpZC6JYBwfUSAoNG7GWCK2ALMCO31l39thJdVMXZAZAPSGYQlG7cPrcvPyUFYYWzJiz40uBh2F1yKJvZCgZDZD"
 
-// function to echo back messages - added by Stefan
 function sendTextMessage(sender, text) {
     messageData = {text}
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
+        qs: { access_token:token },
         method: 'POST',
         json: {
-            recipient: {id:sender},
+            recipient: { id:sender },
             message: messageData,
         }
     }, function(error, response, body) {
@@ -72,7 +68,6 @@ function sendTextMessage(sender, text) {
 }
 
 
-// Send an test message back as two cards.
 function sendGenericMessage(sender) {
     messageData = {
         "attachment": {
@@ -141,7 +136,7 @@ app.get('/test/:text',function(req,res){
         if (error) {
             console.log('Error sending messages: ', error)
         }else if(ress.statusCode != 200){
-            console.log("มึงพูดอะไร กูไม่เข้าใจ")
+            console.log("error")
         }else{
             console.log(body);
             // var text = JSON.parse(body).response
@@ -153,13 +148,12 @@ app.get('/test/:text',function(req,res){
 
 //simsimi
 function reqSimsimi(sender,text){
-    // var url = "http://sandbox.api.simsimi.com/request.p?key=5dcc66e5-502c-4f8d-8d05-930c3d704188&lc=th&ft=1.0&text="+text
     var url = "http://www.simsimi.com/getRealtimeReq?uuid=x05UQevdOagK43juPwfg5pKmYFLXJD6t4UIQP2sEL7B&lc=th&ft=1&status=W&reqText="+text
     request(url, function(error, ress, body) {
         if (error) {
             console.log('Error sending messages: ', error)
         }else if(ress.statusCode != 200){
-            sendTextMessage(sender,"มึงพูดอะไร กูไม่เข้าใจ")
+            sendTextMessage(sender,"error")
         }else{
             // var text = JSON.parse(body).response
             var text = JSON.parse(body).respSentence
