@@ -22,7 +22,7 @@ or message directly >> https://www.messenger.com/t/kaosbot
 
 ## Implementation
 
-* Change token, app_id, page_id
+* Change token, app_id, page_id only in `index.js` and `index.html`
 
 * Whitelist your domain
 
@@ -37,4 +37,4 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 * Have fun!
 
-> Don't forgot my Facebook app is not released yet, So it will response me only.
+> Don't forgot that my Facebook app is not released yet, So it will response me only.
